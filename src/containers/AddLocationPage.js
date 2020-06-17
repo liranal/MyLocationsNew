@@ -1,12 +1,22 @@
 import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import { TextField, Button } from "@material-ui/core";
+import { connect, useDispatch, useSelector } from "react-redux";
+import {
+  TextField,
+  Button,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 import { addLocation } from "../actions/locations.actions";
 const AddLocationPage = (props) => {
   const [locationName, setlocationName] = useState("");
+  const [categoryID, setcategoryID] = useState(0);
+  const categories = useSelector((state) => {
+    return state.CategoryReducer.categories;
+  });
   const dispatch = useDispatch();
   const addLocationEvent = () => {
-    dispatch(addLocation(locationName));
+    dispatch(addLocation({ name: locationName, categoryID: categoryID }));
     props.history.push("/Locations");
   };
   return (
@@ -18,6 +28,26 @@ const AddLocationPage = (props) => {
           setlocationName(e.target.value);
         }}
       />
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={categoryID}
+      >
+        {categories.map((category, index) => {
+          return (
+            <MenuItem
+              key={index}
+              value={category.id}
+              onClick={() => {
+                console.log(category);
+                setcategoryID(category.id);
+              }}
+            >
+              {category.name}
+            </MenuItem>
+          );
+        })}
+      </Select>
       <Button onClick={addLocationEvent}>Add Location</Button>
     </div>
   );

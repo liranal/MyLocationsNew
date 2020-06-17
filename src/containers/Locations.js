@@ -7,6 +7,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
   List,
+  Typography,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { removeLocation } from "../actions/locations.actions";
@@ -26,7 +27,17 @@ const Locations = (props) => {
             return (
               <ListItemLink>
                 <Link key={index} to={"/Location/" + location.id}>
-                  <ListItemText key={index} primary={location.name} />
+                  <ListItemText
+                    key={index}
+                    primary={location.name}
+                    secondary={
+                      <div>
+                        <ul>
+                          <li>Category:{location.categoryID}</li>
+                        </ul>
+                      </div>
+                    }
+                  />
                 </Link>
                 <ListItemSecondaryAction>
                   <IconButton

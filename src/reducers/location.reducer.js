@@ -8,7 +8,11 @@ const reducer = (state = initState, action) => {
   console.log(action);
   switch (action.type) {
     case "ADD_LOCATION":
-      const newLocation = { name: action.payload, id: genId() };
+      const newLocation = {
+        name: action.payload.name,
+        categoryID: action.payload.categoryID,
+        id: genId(),
+      };
       const newerLocations = [...state.locations, newLocation];
       state = { ...state, locations: newerLocations };
       break;
