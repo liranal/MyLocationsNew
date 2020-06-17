@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, FormControl } from "@material-ui/core";
 import { addCategory } from "../actions/categories.actions";
 import { useDispatch } from "react-redux";
 const AddCategoryPage = (props) => {
@@ -12,15 +12,18 @@ const AddCategoryPage = (props) => {
     props.history.push("/Categories");
   };
   return (
-    <div>
-      <TextField
-        id="standard-basic"
-        label="Category"
-        onChange={(e) => {
-          setcategoryName(e.target.value);
-        }}
-      />
-      <Button onClick={addCategoryEvent}>Add</Button>
+    <div class="AddForm">
+      <FormControl>
+        <TextField
+          id="standard-basic"
+          class="formField"
+          label="Category"
+          onChange={(e) => {
+            setcategoryName(e.target.value);
+          }}
+        />
+        <Button onClick={addCategoryEvent}>Add</Button>
+      </FormControl>
     </div>
   );
 };

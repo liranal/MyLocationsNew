@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { removeLocation } from "../actions/locations.actions";
-
+import AddIcon from "@material-ui/icons/Add";
 const Locations = (props) => {
   const locations = useSelector((state) => state.LocationReducer.locations);
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Locations = (props) => {
       {locations.length > 0 ? (
         <List>
           {locations.map((location, index) => {
+            console.log(location);
             return (
               <ListItemLink>
                 <Link key={index} to={"/Location/" + location.id}>
@@ -34,6 +35,9 @@ const Locations = (props) => {
                       <div>
                         <ul>
                           <li>Category:{location.categoryID}</li>
+                          <li>Latitude:{location.latitude}</li>
+                          <li>Longtitude:{location.longtitude}</li>
+                          <li>Address:{location.address}</li>
                         </ul>
                       </div>
                     }
@@ -55,7 +59,13 @@ const Locations = (props) => {
       ) : (
         <div>No Locations</div>
       )}
-      <Link to="/Locations/Add">Add</Link>
+      <div>
+        <Link to="/Locations/Add">
+          <IconButton>
+            <AddIcon></AddIcon>
+          </IconButton>
+        </Link>
+      </div>
     </div>
   );
 };

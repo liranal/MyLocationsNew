@@ -5,12 +5,19 @@ const initState = {
 };
 
 const reducer = (state = initState, action) => {
-  console.log(action);
   switch (action.type) {
     case "ADD_LOCATION":
+      console.log("ACTION FROM LOCATION REDU: ");
+      console.log(action.payload);
       const newLocation = {
         name: action.payload.name,
-        categoryID: action.payload.categoryID,
+        categoryID:
+          action.payload.categoryID == ""
+            ? "Default"
+            : action.payload.categoryID,
+        address: action.payload.address,
+        latitude: action.payload.latitude,
+        longtitude: action.payload.longtitude,
         id: genId(),
       };
       const newerLocations = [...state.locations, newLocation];
