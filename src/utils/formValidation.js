@@ -1,1 +1,1 @@
-export const validate = (value) => {};
+export const requi = (value) => {};

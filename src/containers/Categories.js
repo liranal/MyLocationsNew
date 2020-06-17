@@ -44,6 +44,7 @@ const Categories = (props) => {
                 </Link>
                 <ListItemSecondaryAction>
                   <IconButton
+                    disabled={category.id == 0}
                     edge="end"
                     aria-label="delete"
                     onClick={() => RemoveCategoryEvent(category)}

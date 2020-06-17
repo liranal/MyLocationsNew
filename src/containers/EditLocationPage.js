@@ -27,7 +27,16 @@ const EditLocationPage = (props) => {
   });
 
   const EditLocationEvent = () => {
-    dispatch(editLocation({ name: locationName, id: props.match.params.id }));
+    dispatch(
+      editLocation({
+        name: locationName,
+        id: props.match.params.id,
+        categoryID: categoryID,
+        longtitude: longtitude,
+        latitude: latitude,
+        address: address,
+      })
+    );
 
     //props.EditCategory({ name: categoryName, id: props.match.params.id });
     props.history.push("/Locations");

@@ -12,9 +12,7 @@ const reducer = (state = initState, action) => {
       const newLocation = {
         name: action.payload.name,
         categoryID:
-          action.payload.categoryID == ""
-            ? "Default"
-            : action.payload.categoryID,
+          action.payload.categoryID == "" ? 0 : action.payload.categoryID,
         address: action.payload.address,
         latitude: action.payload.latitude,
         longtitude: action.payload.longtitude,

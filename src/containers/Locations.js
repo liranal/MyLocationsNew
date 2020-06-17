@@ -14,6 +14,7 @@ import { removeLocation } from "../actions/locations.actions";
 import AddIcon from "@material-ui/icons/Add";
 const Locations = (props) => {
   const locations = useSelector((state) => state.LocationReducer.locations);
+  const categories = useSelector((state) => state.CategoryReducer.categories);
   const dispatch = useDispatch();
 
   const RemoveLocationEvent = (location) => {
@@ -33,8 +34,14 @@ const Locations = (props) => {
                     primary={location.name}
                     secondary={
                       <div>
-                        <ul>
-                          <li>Category:{location.categoryID}</li>
+                        <ul class="list-unstyled">
+                          <li>
+                            Category:
+                            {categories.map((category) => {
+                              if (category.id == location.categoryID)
+                                return <span>{category.name}</span>;
+                            })}
+                          </li>
                           <li>Latitude:{location.latitude}</li>
                           <li>Longtitude:{location.longtitude}</li>
                           <li>Address:{location.address}</li>

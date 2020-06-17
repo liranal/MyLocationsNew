@@ -1,7 +1,7 @@
 import { genId } from "../utils/Utility";
 
 const initState = {
-  categories: [],
+  categories: [{ id: 0, name: "Default" }],
 };
 
 const reducer = (state = initState, action) => {
@@ -11,9 +11,9 @@ const reducer = (state = initState, action) => {
       const newerCategories = [...state.categories, newCategory];
       state = { ...state, categories: newerCategories };
       break;
-    case "FETCH_CATEGORIES":
-      state = { ...state };
-      break;
+    // case "FETCH_CATEGORIES":
+    //   state = { ...state };
+    //   break;
     case "EDIT_CATEGORY":
       let new_categories = [...state.categories];
       let indexToUpdate = new_categories.findIndex(
